@@ -11,5 +11,6 @@ const authOptions = NextAuth({
         // ...add more providers here
     ],
 })
+// this is route js
 
 export { authOptions as GET, authOptions as POST }
