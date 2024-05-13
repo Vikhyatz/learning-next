@@ -1,7 +1,17 @@
+'use client'
+
+import { useSession, signIn, signOut } from "next-auth/react"
 import Link from 'next/link'
 
-export default function home () {
-    return (
+export default function home() {
+    const { data: session } = useSession()
+    if (session) {
+        return <>
+            Signed in as {session.user.email} <br />
+            <button onClick={() => signOut()}>Sign out</button>
+        </>
+    }
+    return <>
         <div className='flex justify-center items-center w-full h-screen overflow-hidden bg-[#313338] flex-col '>
             <div className="w-[80%] max-w-[550px] justify-center items-center flex-col p-[5%] text-center">
                 <p className="w-full text-white font-bold text-[30px]">Welcome Back!</p>
@@ -17,7 +27,9 @@ export default function home () {
                     <p>don&apos;t have an account?&nbsp;</p>
                     <Link className='text-[#00a8fc]' href="/signup"> sign up </Link>
                 </div>
+                <button onClick={() => signIn()} className="w-full p-[10px] rounded-[5px] cursor-pointer duration-[0.3s] mt-[20px] bg-[#5865f2] outline-0 border-0 text-white hover:opacity-[0.7] " type="submit">log in using github</button>
             </div>
         </div>
-    )
+
+    </>
 }

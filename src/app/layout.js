@@ -1,9 +1,10 @@
 import { Poppins } from 'next/font/google'
 import './global.css'
 import Script from 'next/script'
+import SessionWrapper from './components/sessionWrapper'
 
 
-const inter = Poppins({ subsets: ['latin'], weight: ["100" , "200" , "300" , "400" , "500" , "600" , "700" , "800" , "900"] })
+const inter = Poppins({ subsets: ['latin'], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,10 +16,12 @@ const combinedClass = `${inter.className} ${tailClass}`
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={combinedClass}>
-        {children}
+      <SessionWrapper>
+        <body className={combinedClass}>
+          {children}
         </body>
-        <Script src='https://kit.fontawesome.com/60734bdbf3.js' />
+      </SessionWrapper>
+      <Script src='https://kit.fontawesome.com/60734bdbf3.js' />
     </html>
   )
 }
