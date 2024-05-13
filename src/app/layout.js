@@ -1,7 +1,7 @@
 import { Poppins } from 'next/font/google'
 import './global.css'
 import Script from 'next/script'
-import SessionWrapper from './components/sessionWrapper'
+import { SessionWrapper } from './components/SessionWrapper'
 
 
 const inter = Poppins({ subsets: ['latin'], weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] })
